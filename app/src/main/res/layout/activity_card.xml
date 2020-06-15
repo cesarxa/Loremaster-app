@@ -6,4 +6,60 @@
     android:layout_height="match_parent"
     tools:context=".Card">
 
+    <TextView
+        android:id="@+id/cardPrice"
+        android:layout_width="222dp"
+        android:layout_height="27dp"
+        android:text="Price:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="397dp" />
+
+    <TextView
+        android:id="@+id/cardQuantity"
+        android:layout_width="222dp"
+        android:layout_height="27dp"
+        android:text="Quantity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="436dp" />
+
+    <ImageView
+        android:id="@+id/cardImage"
+        android:layout_width="222dp"
+        android:layout_height="320dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="16dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/cardName"
+        android:layout_width="222dp"
+        android:layout_height="27dp"
+        android:text="Name:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="356dp" />
+
+    <Button
+        android:id="@+id/addQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:text="Add"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="484dp" />
+
+    <Button
+        android:id="@+id/subtractQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="92dp"
+        android:text="SUBTRACT"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="484dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
