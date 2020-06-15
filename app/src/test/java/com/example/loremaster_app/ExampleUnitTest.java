@@ -39,6 +39,6 @@ public class ProfileUnitTest {
         assertTrue(TestBoy.password == "testboy");
         // checking blank password
         TestBoy.setPassword("");
-        assertTrue(TestBoy.password != "");
+        assertTrue(TestBoy.passPasswordword != "");
     }
 }
