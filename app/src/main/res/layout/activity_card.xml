@@ -64,12 +64,22 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="586dp" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="346dp"
-        android:layout_height="146dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="32dp" />
+    <EditText
+        android:id="@+id/getCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter Card Name"
+        tools:layout_editor_absoluteX="103dp"
+        tools:layout_editor_absoluteY="11dp" />
+
+    <Button
+        android:id="@+id/butGetCard"
+        android:layout_width="162dp"
+        android:layout_height="35dp"
+        android:text="Get Card Info"
+        tools:layout_editor_absoluteX="124dp"
+        tools:layout_editor_absoluteY="68dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
