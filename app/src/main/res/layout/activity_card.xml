@@ -79,6 +79,7 @@
         android:layout_width="162dp"
         android:layout_height="35dp"
         android:text="Get Card Info"
+        android:onClick="getCardInfo"
         tools:layout_editor_absoluteX="124dp"
         tools:layout_editor_absoluteY="68dp" />
 
