@@ -33,7 +33,7 @@ public class Card extends AppCompatActivity {
 
     public void butGetCard(View view){
         //still need correct info request  !FIX - missing "+ getCard.getText().toString() +" in url.
-        String url = "https://api.scryfall.com/bulk-data";
+        String url = "https://api.scryfall.com/bulk-data/922288cb-4bef-45e1-bb30-0c2bd3d3534f";
     }
 
     public class scryFall extends AsyncTask<String, String, String> {
