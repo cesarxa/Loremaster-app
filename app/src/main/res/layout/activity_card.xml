@@ -6,81 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".Card">
 
-    <ImageView
-        android:id="@+id/cardImage"
-        android:layout_width="222dp"
-        android:layout_height="320dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="205dp"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/cardQuantity"
-        android:layout_width="222dp"
-        android:layout_height="27dp"
-        android:text="Quantity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="625dp" />
-
-    <TextView
-        android:id="@+id/cardName"
-        android:layout_width="222dp"
-        android:layout_height="27dp"
-        android:text="Name:"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="545dp" />
-
-    <Button
-        android:id="@+id/addQuantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:text="Add"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="673dp" />
-
-    <Button
-        android:id="@+id/subtractQuantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="84dp"
-        android:text="SUBTRACT"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="673dp" />
-
-    <TextView
-        android:id="@+id/cardPrice"
-        android:layout_width="222dp"
-        android:layout_height="27dp"
-        android:text="Price:"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="586dp" />
-
     <EditText
         android:id="@+id/getCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Enter Card Name"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="11dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/butGetCard"
         android:layout_width="162dp"
         android:layout_height="35dp"
-        android:text="Get Card Info"
+        android:layout_marginTop="16dp"
         android:onClick="getCardInfo"
-        tools:layout_editor_absoluteX="124dp"
-        tools:layout_editor_absoluteY="68dp" />
+        android:text="Get Card Info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/getCard" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
