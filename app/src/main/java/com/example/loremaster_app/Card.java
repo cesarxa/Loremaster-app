@@ -30,10 +30,11 @@ public class Card extends AppCompatActivity {
         getCard = (EditText) findViewById(R.id.getCard);
     }
 
-    public void getCardInfo() {
+    public void getCardInfo(View view) {
         //still need correct info request  !FIX - missing "+ getCard.getText().toString() +" in url.
         //String url = "https://api.scryfall.com/bulk-data/922288cb-4bef-45e1-bb30-0c2bd3d3534f";
-        entireURL = "https://api.scryfall.com/cards/named?fuzzy=" + getCard.getText().toString();
+        //entireURL = "https://api.scryfall.com/cards/named?fuzzy=" + getCard.getText().toString();
+        entireURL = "https://api.scryfall.com/cards/random";
         new Scryfall().execute();
     }
 
