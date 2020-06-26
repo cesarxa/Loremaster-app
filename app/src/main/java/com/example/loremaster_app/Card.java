@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import org.json.JSONObject;
+import com.google.gson.Gson;
 
 import javax.net.ssl.HttpsURLConnection;
 
