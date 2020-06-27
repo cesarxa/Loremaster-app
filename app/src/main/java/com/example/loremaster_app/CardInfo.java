@@ -11,6 +11,14 @@ public class CardInfo {
     private String mana_cost;
     private Map<String, String> prices;
 
+    private Map<String, String> getPrices(){
+        return prices;
+    }
+
+    private Map<String, String> getImageURIs(){
+        return image_uris;
+    }
+
     public String getName() {
         return name;
     }
@@ -28,10 +36,12 @@ public class CardInfo {
     }
 
     public void displayAll() {
-        System.out.println(name);
-        System.out.println(uri);
-        System.out.println(oracle_text);
-        System.out.println(type_line);
-        System.out.println(mana_cost);
+        System.out.println("Name: " + name);
+        System.out.println("URI: " + uri);
+        System.out.println("Oracle Text: " + oracle_text);
+        System.out.println("Type: " + type_line);
+        System.out.println("Mana Cost: " + mana_cost);
+        System.out.println("Image URI (Large): " + image_uris.get("large"));
+        System.out.println("Price USD: " + prices.get("usd"));
     }
 }
