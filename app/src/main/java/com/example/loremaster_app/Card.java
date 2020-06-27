@@ -22,7 +22,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class Card extends AppCompatActivity {
 
     EditText getCard;
-    static String entireURL;
+    String entireURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +59,17 @@ public class Card extends AppCompatActivity {
                     throw new IOException("Invalid response from server: " + code);
                 }
                 BufferedReader rd = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                StringBuilder stringBuilder = new StringBuilder();
                 String line;
                 while ((line = rd.readLine()) != null) {
                     System.out.println(line);
+                    stringBuilder.append(line);
                 }
+                Gson gson = new Gson();
+                CardInfo currentCard = gson.fromJson(stringBuilder.toString(), CardInfo.class);
+                //TEMPORARY CODE
+                //displayAll() prints all string qualities of the card to the console
+                currentCard.displayAll();
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
