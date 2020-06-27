@@ -36,12 +36,18 @@ public class Card extends AppCompatActivity {
         //String url = "https://api.scryfall.com/bulk-data/922288cb-4bef-45e1-bb30-0c2bd3d3534f";
         //entireURL = "https://api.scryfall.com/cards/named?fuzzy=" + getCard.getText().toString();
         entireURL = "https://api.scryfall.com/cards/random";
-        new Scryfall().execute();
+        Scryfall scryfall = new Scryfall(entireURL);
+        Thread t = new Thread(scryfall);
+        t.start();
     }
 
-    public static class Scryfall extends AsyncTask<Void, Void, Void> {
+    public class Scryfall implements Runnable {
+        private String entireURL;
+        public Scryfall(String entireURL) {
+            this.entireURL = entireURL;
+        }
         @Override
-        protected Void doInBackground(Void... params) {
+        public void run() {
             HttpURLConnection urlConnection = null;
 
             try {
@@ -66,7 +72,6 @@ public class Card extends AppCompatActivity {
                     urlConnection.disconnect();
                 }
             }
-            return null;
         }
     }
 }
@@ -115,42 +120,5 @@ public class Card extends AppCompatActivity {
 //            return linereultcal;
 //        }
 //
-//    }
-//}
-
-
-
-
-
-////   Sterling Code
-
-//public class Card extends AppCompatActivity {
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_card);
-//    }
-//
-//    public static void callScryfall() {
-//        Scanner scannerCity = new Scanner(System.in);  // Create a Scanner object
-//        System.out.print("Please Enter City for Weather Report: ");
-//
-//        String scanCity = scannerCity.nextLine();  // Read user input
-//
-//        String url = "https://api.scryfall.com";
-//        String charset = "UTF-8";
-//
-//        URLConnection connection = new URL(url).openConnection();
-//        connection.setRequestProperty("Accept-Charset", charset);
-//        InputStream response = connection.getInputStream();
-//
-//        try (Scanner scanner = new Scanner(response)) {
-//            String responseBody = scanner.useDelimiter("\\A").next();
-//            System.out.println(responseBody);
-//            Gson g2 = new Gson();
-//            //WeatherConditions new_p = g2.fromJson(responseBody, WeatherConditions.class);
-//            //new_p.display();
-//        }
 //    }
 //}
