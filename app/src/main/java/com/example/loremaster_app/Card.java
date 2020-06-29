@@ -33,6 +33,9 @@ public class Card extends AppCompatActivity {
 
     public void getCardInfo(View view) {
         //entireURL = "https://api.scryfall.com/cards/named?fuzzy=" + getCard.getText().toString();
+        String NewString = getCard.getText().toString();
+        NewString = NewString.replaceAll(" ", "+");
+
         entireURL = "https://api.scryfall.com/cards/random";
         Scryfall scryfall = new Scryfall(entireURL);
         Thread t = new Thread(scryfall);
