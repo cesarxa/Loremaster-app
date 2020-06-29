@@ -43,5 +43,7 @@ public class CardInfo {
         System.out.println("Mana Cost: " + mana_cost);
         System.out.println("Image URI (Large): " + image_uris.get("large"));
         System.out.println("Price USD: " + prices.get("usd"));
+        System.out.println("Price USD FOIL: " + prices.get("usd_foil"));
+
     }
 }
