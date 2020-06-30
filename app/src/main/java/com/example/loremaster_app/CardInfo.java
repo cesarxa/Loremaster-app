@@ -11,13 +11,11 @@ public class CardInfo {
     private String mana_cost;
     private Map<String, String> prices;
 
-    private Map<String, String> getPrices(){
+    public Map<String, String> getPrices(){
         return prices;
     }
 
-    private Map<String, String> getImageURIs(){
-        return image_uris;
-    }
+    public Map<String, String> getImageURIs(){ return image_uris;}
 
     public String getName() {
         return name;
@@ -46,4 +44,10 @@ public class CardInfo {
         System.out.println("Price USD FOIL: " + prices.get("usd_foil"));
 
     }
+
+    public void displayImage() {
+
+    }
+
+
 }

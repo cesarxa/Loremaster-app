@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Intent cardPassingIntent = new Intent(this, Card.class);
         Intent intent = getIntent();
         startActivity(cardPassingIntent);
+
     }
 
     private static class HTTPReqTask extends AsyncTask<Void, Void, Void>

@@ -29,4 +29,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/getCard" />
 
+    <ImageView
+        android:id="@+id/image_View"
+        android:layout_width="250dp"
+        android:layout_height="350dp"
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="215dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

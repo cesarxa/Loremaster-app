@@ -4,18 +4,24 @@ import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.net.HttpURLConnection;
 import java.net.URLConnection;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Map;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+
 import org.json.JSONObject;
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -29,6 +35,7 @@ public class Card extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card);
         getCard = (EditText) findViewById(R.id.getCard);
+
     }
 
     public void getCardInfo(View view) {
@@ -40,6 +47,7 @@ public class Card extends AppCompatActivity {
         Scryfall scryfall = new Scryfall(entireURL);
         Thread t = new Thread(scryfall);
         t.start();
+
     }
 
     public class Scryfall implements Runnable {
@@ -49,6 +57,7 @@ public class Card extends AppCompatActivity {
         }
         @Override
         public void run() {
+
             HttpURLConnection urlConnection = null;
 
             try {
@@ -73,6 +82,12 @@ public class Card extends AppCompatActivity {
                 //TEMPORARY CODE
                 //displayAll() prints all string qualities of the card to the console
                 currentCard.displayAll();
+
+                // Displaying image
+                ImageView imageView = findViewById(R.id.image_View);
+                String murl = ; // need to add method or url of images searched;
+                Picasso.get().load(murl).into(imageView);
+
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
