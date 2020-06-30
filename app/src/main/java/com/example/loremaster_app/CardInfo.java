@@ -5,7 +5,7 @@ import java.util.Map;
 public class CardInfo {
     private String name;
     private String uri;
-    private static Map<String, String> image_uris;
+    private  Map<String, String> image_uris;
     private String oracle_text;
     private String type_line;
     private String mana_cost;
@@ -16,7 +16,7 @@ public class CardInfo {
         return prices;
     }
 
-    public static Map<String, String> getImageURIs() {
+    public Map<String, String> getImageURIs() {
         return image_uris;
     }
 
@@ -51,9 +51,10 @@ public class CardInfo {
         System.out.println("Price USD FOIL: " + prices.get("usd_foil"));
 
     }
-
-    public static String displayImage() {
-        System.out.println(image_uris.get("large"));
+/*
+    public static String getLargeImage() {
+        return image_uris.get("large");
     }
+ */
 
 }
