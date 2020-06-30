@@ -85,7 +85,7 @@ public class Card extends AppCompatActivity {
 
                 // Displaying image
                 ImageView imageView = findViewById(R.id.image_View);
-                String murl = ; // need to add method or url of images searched;
+                String murl = CardInfo.displayImage(); // need to add method or url of images searched;
                 Picasso.get().load(murl).into(imageView);
 
             } catch (Exception e) {

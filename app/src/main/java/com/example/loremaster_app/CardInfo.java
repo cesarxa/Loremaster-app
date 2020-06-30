@@ -5,30 +5,37 @@ import java.util.Map;
 public class CardInfo {
     private String name;
     private String uri;
-    private Map<String, String> image_uris;
+    private static Map<String, String> image_uris;
     private String oracle_text;
     private String type_line;
     private String mana_cost;
     private Map<String, String> prices;
 
-    public Map<String, String> getPrices(){
+
+    public Map<String, String> getPrices() {
         return prices;
     }
 
-    public Map<String, String> getImageURIs(){ return image_uris;}
+    public static Map<String, String> getImageURIs() {
+        return image_uris;
+    }
 
     public String getName() {
         return name;
     }
+
     public String getURI() {
         return uri;
     }
+
     public String getOracleText() {
         return oracle_text;
     }
+
     public String getTypeLine() {
         return type_line;
     }
+
     public String getManaCost() {
         return mana_cost;
     }
@@ -45,9 +52,8 @@ public class CardInfo {
 
     }
 
-    public void displayImage() {
-
+    public static String displayImage() {
+        System.out.println(image_uris.get("large"));
     }
-
 
 }
