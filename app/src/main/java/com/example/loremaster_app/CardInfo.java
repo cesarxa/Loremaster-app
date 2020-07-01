@@ -1,5 +1,6 @@
 package com.example.loremaster_app;
 
+import java.io.ObjectInputStream;
 import java.util.Map;
 
 public class CardInfo {
@@ -12,33 +13,14 @@ public class CardInfo {
     private Map<String, String> prices;
 
 
-    public Map<String, String> getPrices() {
-        return prices;
-    }
+    public Map<String, String> getPrices() { return prices; }
+    public Map<String, String> getImageURIs() { return image_uris; }
 
-    public Map<String, String> getImageURIs() {
-        return image_uris;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getURI() {
-        return uri;
-    }
-
-    public String getOracleText() {
-        return oracle_text;
-    }
-
-    public String getTypeLine() {
-        return type_line;
-    }
-
-    public String getManaCost() {
-        return mana_cost;
-    }
+    public String getName() { return name; }
+    public String getURI() { return uri; }
+    public String getOracleText() { return oracle_text; }
+    public String getTypeLine() { return type_line; }
+    public String getManaCost() { return mana_cost; }
 
     public void displayAll() {
         System.out.println("Name: " + name);
@@ -51,10 +33,5 @@ public class CardInfo {
         System.out.println("Price USD FOIL: " + prices.get("usd_foil"));
 
     }
-/*
-    public static String getLargeImage() {
-        return image_uris.get("large");
-    }
- */
 
 }

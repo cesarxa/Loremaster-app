@@ -9,6 +9,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    
     defaultConfig {
         applicationId "com.example.loremaster_app"
         minSdkVersion 29
