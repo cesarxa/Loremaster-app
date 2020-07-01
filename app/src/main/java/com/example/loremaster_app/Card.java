@@ -28,6 +28,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class Card extends AppCompatActivity {
 
     EditText getCard;
+    ImageView imageViewDisplayer;
     String entireURL;
 
     @Override
@@ -35,7 +36,7 @@ public class Card extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card);
         getCard = (EditText) findViewById(R.id.getCard);
-
+        imageViewDisplayer = (ImageView) findViewById(R.id.image_View);
     }
 
     public void getCardInfo(View view) {
@@ -44,7 +45,7 @@ public class Card extends AppCompatActivity {
 
         entireURL = "https://api.scryfall.com/cards/named?fuzzy=" + NewString;
         //entireURL = "https://api.scryfall.com/cards/random";
-        Scryfall scryfall = new Scryfall(entireURL);
+        Scryfall scryfall = new Scryfall(entireURL, imageViewDisplayer);
         Thread t = new Thread(scryfall);
         t.start();
 
@@ -52,8 +53,11 @@ public class Card extends AppCompatActivity {
 
     public class Scryfall implements Runnable {
         private String entireURL;
-        public Scryfall(String entireURL) {
+        private ImageView theImageView;
+
+        public Scryfall(String entireURL, ImageView anImageView) {
             this.entireURL = entireURL;
+            this.theImageView = anImageView;
         }
         @Override
         public void run() {
@@ -78,16 +82,19 @@ public class Card extends AppCompatActivity {
                     stringBuilder.append(line);
                 }
                 Gson gson = new Gson();
-                CardInfo currentCard = gson.fromJson(stringBuilder.toString(), CardInfo.class);
+                final CardInfo currentCard = gson.fromJson(stringBuilder.toString(), CardInfo.class);
                 //TEMPORARY CODE
                 //displayAll() prints all string qualities of the card to the console
                 currentCard.displayAll();
 
-                // Displaying image
-                ImageView imageView = findViewById(R.id.image_View);
-
-                String murl = currentCard.getImageURIs().get("large"); //currentCard.getLargeImage(); // need to add method or url of images searched;
-                Picasso.get().load(murl).into(imageView);
+                // display image in uithread
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String murl = currentCard.getImageURIs().get("large"); //currentCard.getLargeImage(); // need to add method or url of images searched;
+                        Picasso.get().load(murl).into(theImageView);
+                    }
+                });
 
             } catch (Exception e) {
                 e.printStackTrace();
