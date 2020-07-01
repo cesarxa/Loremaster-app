@@ -82,7 +82,7 @@ public class Card extends AppCompatActivity {
                     stringBuilder.append(line);
                 }
                 Gson gson = new Gson();
-                final CardInfo currentCard = gson.fromJson(stringBuilder.toString(), CardInfo.class);
+                CardInfo currentCard = gson.fromJson(stringBuilder.toString(), CardInfo.class);
                 //TEMPORARY CODE
                 //displayAll() prints all string qualities of the card to the console
                 currentCard.displayAll();
