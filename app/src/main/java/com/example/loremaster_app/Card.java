@@ -14,11 +14,13 @@ import java.util.Map;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.json.JSONObject;
 import com.google.gson.Gson;
@@ -33,6 +35,7 @@ public class Card extends AppCompatActivity {
     String entireURL;
     CardInfo currentCard;
     List<InventoryItem> inventory;
+    TextView textViewDisplayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,7 @@ public class Card extends AppCompatActivity {
         setContentView(R.layout.activity_card);
         getCard = (EditText) findViewById(R.id.getCard);
         imageViewDisplayer = (ImageView) findViewById(R.id.image_View);
+        textViewDisplayer = (TextView) findViewById(R.id.cardInfoView);
     }
 
     public void addCard(View view) {
@@ -55,7 +59,7 @@ public class Card extends AppCompatActivity {
 
         entireURL = "https://api.scryfall.com/cards/named?fuzzy=" + NewString;
         //entireURL = "https://api.scryfall.com/cards/random";
-        Scryfall scryfall = new Scryfall(entireURL, imageViewDisplayer);
+        Scryfall scryfall = new Scryfall(entireURL, imageViewDisplayer, textViewDisplayer);
         Thread t = new Thread(scryfall);
         t.start();
 
@@ -64,10 +68,12 @@ public class Card extends AppCompatActivity {
     public class Scryfall implements Runnable {
         private String entireURL;
         private ImageView theImageView;
+        private TextView thetextView;
 
-        public Scryfall(String entireURL, ImageView anImageView) {
+        public Scryfall(String entireURL, ImageView anImageView, TextView atextView) {
             this.entireURL = entireURL;
             this.theImageView = anImageView;
+            this.thetextView = atextView;
         }
         @Override
         public void run() {
@@ -103,8 +109,18 @@ public class Card extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        String murl = newCard.getImageURIs().get("large"); //newCard.getLargeImage(); // need to add method or url of images searched;
+                        String murl = newCard.getImageURIs().get("border_crop"); //newCard.getLargeImage(); // need to add method or url of images searched;
                         Picasso.get().load(murl).into(theImageView);
+
+                        String cInfo =  ("Name: " + newCard.getName()) +
+                                        ("\nOracle Text: " + newCard.getOracleText()) +
+                                        ("\nType: " + newCard.getTypeLine()) +
+                                        ("\nMana Cost: " + newCard.getManaCost()) +
+                                        ("\nPrice USD: $" + newCard.getPrices().get("usd")) +
+                                        ("\nPrice USD Foil: $" + newCard.getPrices().get("usd_foil"));
+                        textViewDisplayer.setText(cInfo);
+                        textViewDisplayer.setMovementMethod(new ScrollingMovementMethod());
+
                     }
                 });
 
