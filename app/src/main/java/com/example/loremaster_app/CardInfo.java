@@ -4,6 +4,7 @@ import java.io.ObjectInputStream;
 import java.util.Map;
 
 public class CardInfo {
+
     private String name;
     private String uri;
     private  Map<String, String> image_uris;
@@ -11,7 +12,6 @@ public class CardInfo {
     private String type_line;
     private String mana_cost;
     private Map<String, String> prices;
-
 
     public Map<String, String> getPrices() { return prices; }
     public Map<String, String> getImageURIs() { return image_uris; }
@@ -31,7 +31,6 @@ public class CardInfo {
         System.out.println("Image URI (Large): " + image_uris.get("large"));
         System.out.println("Price USD: " + prices.get("usd"));
         System.out.println("Price USD FOIL: " + prices.get("usd_foil"));
-
     }
 
 }
