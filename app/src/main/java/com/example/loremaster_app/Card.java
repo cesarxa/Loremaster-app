@@ -9,6 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URLConnection;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 
 import android.os.AsyncTask;
@@ -30,6 +31,8 @@ public class Card extends AppCompatActivity {
     EditText getCard;
     ImageView imageViewDisplayer;
     String entireURL;
+    CardInfo currentCard;
+    List<InventoryItem> inventory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,13 @@ public class Card extends AppCompatActivity {
         setContentView(R.layout.activity_card);
         getCard = (EditText) findViewById(R.id.getCard);
         imageViewDisplayer = (ImageView) findViewById(R.id.image_View);
+    }
+
+    public void addCard(View view) {
+        InventoryItem newItem = null;
+        newItem.setCardInfo(currentCard);
+        inventory.add(newItem);
+        newItem.getCardInfo().displayAll();
     }
 
     public void getCardInfo(View view) {
@@ -82,16 +92,18 @@ public class Card extends AppCompatActivity {
                     stringBuilder.append(line);
                 }
                 Gson gson = new Gson();
-                final CardInfo currentCard = gson.fromJson(stringBuilder.toString(), CardInfo.class);
+                final CardInfo newCard = gson.fromJson(stringBuilder.toString(), CardInfo.class);
+                currentCard = newCard;
+                currentCard.displayAll();
                 //TEMPORARY CODE
                 //displayAll() prints all string qualities of the card to the console
-                currentCard.displayAll();
+                newCard.displayAll();
 
                 // display image in uithread
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        String murl = currentCard.getImageURIs().get("large"); //currentCard.getLargeImage(); // need to add method or url of images searched;
+                        String murl = newCard.getImageURIs().get("large"); //newCard.getLargeImage(); // need to add method or url of images searched;
                         Picasso.get().load(murl).into(theImageView);
                     }
                 });
