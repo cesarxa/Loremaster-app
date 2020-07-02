@@ -9,6 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URLConnection;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 
 import android.os.AsyncTask;
@@ -30,6 +31,8 @@ public class Card extends AppCompatActivity {
     EditText getCard;
     ImageView imageViewDisplayer;
     String entireURL;
+    CardInfo currentCard;
+    List<InventoryItem> inventory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,13 @@ public class Card extends AppCompatActivity {
         setContentView(R.layout.activity_card);
         getCard = (EditText) findViewById(R.id.getCard);
         imageViewDisplayer = (ImageView) findViewById(R.id.image_View);
+    }
+
+    public void addCard(View view) {
+        InventoryItem newItem = null;
+        newItem.setCardInfo(currentCard);
+        inventory.add(newItem);
+        newItem.getCardInfo().displayAll();
     }
 
     public void getCardInfo(View view) {
@@ -82,16 +92,18 @@ public class Card extends AppCompatActivity {
                     stringBuilder.append(line);
                 }
                 Gson gson = new Gson();
-                CardInfo currentCard = gson.fromJson(stringBuilder.toString(), CardInfo.class);
+                final CardInfo newCard = gson.fromJson(stringBuilder.toString(), CardInfo.class);
+                currentCard = newCard;
+                currentCard.displayAll();
                 //TEMPORARY CODE
                 //displayAll() prints all string qualities of the card to the console
-                currentCard.displayAll();
+                newCard.displayAll();
 
                 // display image in uithread
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        String murl = currentCard.getImageURIs().get("large"); //currentCard.getLargeImage(); // need to add method or url of images searched;
+                        String murl = newCard.getImageURIs().get("large"); //newCard.getLargeImage(); // need to add method or url of images searched;
                         Picasso.get().load(murl).into(theImageView);
                     }
                 });
@@ -106,50 +118,3 @@ public class Card extends AppCompatActivity {
         }
     }
 }
-
-//        protected void onProgressUpdate(String... progress) {
-//
-//            try {
-//                JSONObject json= new JSONObject(progress[0]);
-//
-//            JSONObject query=json.getJSONObject("query");            !!!!!!!!! Example of info needed
-//            JSONObject results=query.getJSONObject("results");
-//            JSONObject channel=results.getJSONObject("channel");
-//            JSONObject astronomy=channel.getJSONObject("astronomy");
-//            String sunset=astronomy.getString("sunset");
-//            String sunrise=astronomy.getString("sunrise");
-//
-//                //display response data                                !!!!! FIX THIS
-//                // Toast.makeText(getApplicationContext(),"sunset:"+ sunset + ",sunrise:"+ sunrise,Toast.LENGTH_LONG).show();
-//
-//            } catch (Exception ex) {
-//            }
-//
-//        }
-//
-//        protected void onPostExecute(String  result2){
-//
-//        }
-//
-//        // this method convert any stream to string
-//        public String ConvertInputToStringNoChange(InputStream inputStream) {
-//
-//            BufferedReader bureader=new BufferedReader( new InputStreamReader(inputStream));
-//            String line ;
-//            String linereultcal="";
-//
-//            try{
-//                while((line=bureader.readLine())!=null) {
-//                    linereultcal+=line;
-//                }
-//
-//                inputStream.close();
-//            }
-//
-//            catch (Exception ex){}
-//
-//            return linereultcal;
-//        }
-//
-//    }
-//}
