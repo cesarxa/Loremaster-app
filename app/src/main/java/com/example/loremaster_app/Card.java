@@ -113,9 +113,9 @@ public class Card extends AppCompatActivity {
                         Picasso.get().load(murl).into(theImageView);
 
                         String cInfo =  ("Name: " + newCard.getName()) +
-                                        ("\nOracle Text: " + newCard.getOracleText()) +
-                                        ("\nType: " + newCard.getTypeLine()) +
-                                        ("\nMana Cost: " + newCard.getManaCost()) +
+                                        //("\nOracle Text: " + newCard.getOracleText()) +
+                                        //("\nType: " + newCard.getTypeLine()) +
+                                        //("\nMana Cost: " + newCard.getManaCost()) +
                                         ("\nPrice USD: $" + newCard.getPrices().get("usd")) +
                                         ("\nPrice USD Foil: $" + newCard.getPrices().get("usd_foil"));
                         textViewDisplayer.setText(cInfo);
