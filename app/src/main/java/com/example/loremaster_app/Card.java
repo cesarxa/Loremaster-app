@@ -9,6 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URLConnection;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +24,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.json.JSONObject;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -63,6 +67,35 @@ public class Card extends AppCompatActivity {
         Thread t = new Thread(scryfall);
         t.start();
 
+        // sending inventory to our firebase database
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("server/saving-data/fireblog");
+
+        /*
+        public static class User {
+
+            public String date_of_birth;
+            public String full_name;
+            public String nickname;
+
+            public User(String dateOfBirth, String fullName) {
+                // ...
+            }
+
+            public User(String dateOfBirth, String fullName, String nickname) {
+                // ...
+            }
+
+        }
+
+        DatabaseReference usersRef = ref.child("users");
+
+        Map<String, User> users = new HashMap<>();
+        users.put("alanisawesome", new User("June 23, 1912", "Alan Turing"));
+        users.put("gracehop", new User("December 9, 1906", "Grace Hopper"));
+
+        usersRef.setValueAsync(users);
+        */
     }
 
     public class Scryfall implements Runnable {
