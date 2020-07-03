@@ -12,7 +12,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -67,10 +67,11 @@ public class Card extends AppCompatActivity {
         Thread t = new Thread(scryfall);
         t.start();
 
-        // sending inventory to our firebase database
+        //sending inventory to our firebase database
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("server/saving-data/fireblog");
 
+        //test saving a user to the database
         /*
         public static class User {
 
