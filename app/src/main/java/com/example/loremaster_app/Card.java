@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -48,6 +49,10 @@ public class Card extends AppCompatActivity {
         getCard = (EditText) findViewById(R.id.getCard);
         imageViewDisplayer = (ImageView) findViewById(R.id.image_View);
         textViewDisplayer = (TextView) findViewById(R.id.cardInfoView);
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+        String book = pref.getString("user_inventory", null);
+        System.out.println(book);
     }
 
     public void addCard(View view) {
@@ -70,6 +75,14 @@ public class Card extends AppCompatActivity {
         //sending inventory to our firebase database
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("server/saving-data/fireblog");
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+        SharedPreferences.Editor editor = pref.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(inventory);
+        editor.putString("user_inventory", json); // Storing string
+        editor.commit();
+        System.out.println(json);
 
         //test saving a user to the database
         /*
