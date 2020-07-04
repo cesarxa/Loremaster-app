@@ -9,6 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URLConnection;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,6 +50,7 @@ public class Card extends AppCompatActivity {
         getCard = (EditText) findViewById(R.id.getCard);
         imageViewDisplayer = (ImageView) findViewById(R.id.image_View);
         textViewDisplayer = (TextView) findViewById(R.id.cardInfoView);
+        inventory = new ArrayList<InventoryItem>();
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
         String book = pref.getString("user_inventory", null);
@@ -75,14 +77,6 @@ public class Card extends AppCompatActivity {
         //sending inventory to our firebase database
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("server/saving-data/fireblog");
-
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
-        SharedPreferences.Editor editor = pref.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(inventory);
-        editor.putString("user_inventory", json); // Storing string
-        editor.commit();
-        System.out.println(json);
 
         //test saving a user to the database
         /*
@@ -151,6 +145,20 @@ public class Card extends AppCompatActivity {
                 //TEMPORARY CODE
                 //displayAll() prints all string qualities of the card to the console
                 newCard.displayAll();
+
+                InventoryItem newItem = new InventoryItem();
+                newItem.setCardInfo(currentCard);
+                inventory.add(newItem);
+                newItem.getCardInfo().displayAll();
+
+                SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+                SharedPreferences.Editor editor = pref.edit();
+                Gson gson2 = new Gson();
+                String json = gson2.toJson(inventory);
+                editor.putString("user_inventory", json); // Storing string
+                System.out.println("WE TRY TO PRINT THE JSON STRING HERE");
+                editor.commit();
+                System.out.println(json);
 
                 // display image in uithread
                 runOnUiThread(new Runnable() {
