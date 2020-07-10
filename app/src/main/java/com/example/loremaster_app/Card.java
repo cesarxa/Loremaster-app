@@ -42,6 +42,7 @@ public class Card extends AppCompatActivity {
     CardInfo currentCard;
     List<InventoryItem> inventory;
     TextView textViewDisplayer;
+    Integer quantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +52,6 @@ public class Card extends AppCompatActivity {
         imageViewDisplayer = (ImageView) findViewById(R.id.image_View);
         textViewDisplayer = (TextView) findViewById(R.id.cardInfoView);
         inventory = new ArrayList<InventoryItem>();
-
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
         String book = pref.getString("user_inventory", null);
         System.out.println(book);
@@ -67,43 +67,19 @@ public class Card extends AppCompatActivity {
     public void getCardInfo(View view) {
         String NewString = getCard.getText().toString();
         NewString = NewString.replaceAll(" ", "+");
-
         entireURL = "https://api.scryfall.com/cards/named?fuzzy=" + NewString;
-        //entireURL = "https://api.scryfall.com/cards/random";
         Scryfall scryfall = new Scryfall(entireURL, imageViewDisplayer, textViewDisplayer);
         Thread t = new Thread(scryfall);
         t.start();
+    }
 
-        //sending inventory to our firebase database
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("server/saving-data/fireblog");
+    public void upQuantity(View view) {
+        quantity++;
+    }
 
-        //test saving a user to the database
-        /*
-        public static class User {
-
-            public String date_of_birth;
-            public String full_name;
-            public String nickname;
-
-            public User(String dateOfBirth, String fullName) {
-                // ...
-            }
-
-            public User(String dateOfBirth, String fullName, String nickname) {
-                // ...
-            }
-
-        }
-
-        DatabaseReference usersRef = ref.child("users");
-
-        Map<String, User> users = new HashMap<>();
-        users.put("alanisawesome", new User("June 23, 1912", "Alan Turing"));
-        users.put("gracehop", new User("December 9, 1906", "Grace Hopper"));
-
-        usersRef.setValueAsync(users);
-        */
+    public void downQuantity(View view) {
+        if (quantity > 0)
+        quantity--;
     }
 
     public class Scryfall implements Runnable {
@@ -116,6 +92,7 @@ public class Card extends AppCompatActivity {
             this.theImageView = anImageView;
             this.thetextView = atextView;
         }
+
         @Override
         public void run() {
 
