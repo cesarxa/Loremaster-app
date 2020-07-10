@@ -84,6 +84,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/txtQuantity"
+        android:layout_width="54dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/subButton"
+        app:layout_constraintStart_toEndOf="@+id/image_View"
+        app:layout_constraintTop_toBottomOf="@+id/addButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
