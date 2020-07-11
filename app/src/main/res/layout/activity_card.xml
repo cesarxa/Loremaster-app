@@ -32,8 +32,6 @@
         android:layout_marginTop="8dp"
         android:onClick="getCardInfo"
         android:text="Get Card Info"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.925"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/getCard" />
 
@@ -96,6 +94,18 @@
         app:layout_constraintBottom_toTopOf="@+id/subButton"
         app:layout_constraintStart_toEndOf="@+id/image_View"
         app:layout_constraintTop_toBottomOf="@+id/addButton" />
+
+    <EditText
+        android:id="@+id/btnAddInventory"
+        android:layout_width="120dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="ADD TO INV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/getCard" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
