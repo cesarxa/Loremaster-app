@@ -43,6 +43,7 @@ public class Card extends AppCompatActivity {
     List<InventoryItem> inventory;
     TextView textViewDisplayer;
     Integer quantity;
+    EditText quantfromactivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +52,9 @@ public class Card extends AppCompatActivity {
         getCard = (EditText) findViewById(R.id.getCard);
         imageViewDisplayer = (ImageView) findViewById(R.id.image_View);
         textViewDisplayer = (TextView) findViewById(R.id.cardInfoView);
+        quantfromactivity = (EditText) findViewById(R.id.txtQuantity);
         inventory = new ArrayList<InventoryItem>();
+        quantity = 0;
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
         String book = pref.getString("user_inventory", null);
         System.out.println(book);
@@ -74,12 +77,18 @@ public class Card extends AppCompatActivity {
     }
 
     public void upQuantity(View view) {
+        System.out.println("We got here");
         quantity++;
+        String newText = Integer.toString(quantity);
+        quantfromactivity.setText(newText);
     }
 
     public void downQuantity(View view) {
-        if (quantity > 0)
-        quantity--;
+        if (quantity > 0) {
+            quantity--;
+            String newText = Integer.toString(quantity);
+            quantfromactivity.setText(newText);
+        }
     }
 
     public class Scryfall implements Runnable {
