@@ -1,5 +1,11 @@
 package com.example.loremaster_app;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,6 +33,8 @@ import android.widget.TextView;
 
 import org.json.JSONObject;
 
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
@@ -35,6 +43,13 @@ import com.squareup.picasso.Picasso;
 import javax.net.ssl.HttpsURLConnection;
 
 public class Card extends AppCompatActivity {
+
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private TabItem tab1, tab2;
+    public PageAdapter pageradapter;
+
+
 
     EditText getCard;
     ImageView imageViewDisplayer;
@@ -49,6 +64,49 @@ public class Card extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card);
+
+        //Tab Info
+        TabLayout tabLayout= findViewById(R.id.tablayout);
+        TabItem tab1 =findViewById(R.id.tab1);
+        TabItem tab2 = findViewById(R.id.tab2);
+        ViewPager viewPager = findViewById(R.id.viewpager);
+
+       PagerAdapter pageradapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(pageradapter);
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+                viewPager.setCurrentItem(tab.getPosition());
+
+                if (tab.getPosition() == 0)
+                {
+                    pageradapter.notifyDataSetChanged();
+                } else if  (tab.getPosition() == 1)
+                {
+                    pageradapter.notifyDataSetChanged();
+                } else if  (tab.getPosition() == 2)
+                {
+                    pageradapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+
+
+
+
         getCard = (EditText) findViewById(R.id.getCard);
         imageViewDisplayer = (ImageView) findViewById(R.id.image_View);
         textViewDisplayer = (TextView) findViewById(R.id.cardInfoView);

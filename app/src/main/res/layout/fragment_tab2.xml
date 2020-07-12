@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Card"
+    android:background="@drawable/red_back">
+
+
+
+    <EditText
+        android:id="@+id/getCard"
+        android:layout_width="361dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter Card Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.154"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/butGetCard"
+        android:layout_width="120dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:onClick="getCardInfo"
+        android:text="Get Card Info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/getCard" />
+
+    <ImageView
+        android:id="@+id/image_View"
+        android:layout_width="300dp"
+        android:layout_height="375dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.171"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/butGetCard"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/cardInfoView"
+        android:layout_width="300dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="16dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_View"
+        app:layout_constraintVertical_bias="0.526" />
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="45dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="332dp"
+        android:layout_marginTop="212dp"
+        android:background="@drawable/ic_baseline_add_24"
+        android:text="Inventory"
+        android:onClick="upQuantity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/subButton"
+        android:layout_width="45dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="332dp"
+        android:layout_marginTop="344dp"
+        android:background="@drawable/ic_baseline_remove_24"
+        android:text="Inventory"
+        android:onClick="downQuantity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtQuantity"
+        android:layout_width="54dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/subButton"
+        app:layout_constraintStart_toEndOf="@+id/image_View"
+        app:layout_constraintTop_toBottomOf="@+id/addButton" />
+
+    <Button
+        android:id="@+id/btnAddInventory"
+        android:layout_width="120dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:text="ADD TO INV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/getCard" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
