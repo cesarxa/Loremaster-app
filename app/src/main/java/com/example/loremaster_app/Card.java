@@ -44,12 +44,6 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class Card extends AppCompatActivity {
 
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-    private TabItem tab1, tab2;
-    public PageAdapter pageradapter;
-
-
 
     EditText getCard;
     ImageView imageViewDisplayer;
@@ -64,47 +58,6 @@ public class Card extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card);
-
-        //Tab Info
-        TabLayout tabLayout= findViewById(R.id.tablayout);
-        TabItem tab1 =findViewById(R.id.tab1);
-        TabItem tab2 = findViewById(R.id.tab2);
-        ViewPager viewPager = findViewById(R.id.viewpager);
-
-       PagerAdapter pageradapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(pageradapter);
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-
-                viewPager.setCurrentItem(tab.getPosition());
-
-                if (tab.getPosition() == 0)
-                {
-                    pageradapter.notifyDataSetChanged();
-                } else if  (tab.getPosition() == 1)
-                {
-                    pageradapter.notifyDataSetChanged();
-                } else if  (tab.getPosition() == 2)
-                {
-                    pageradapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-            }
-        });
-
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-
-
 
 
         getCard = (EditText) findViewById(R.id.getCard);
