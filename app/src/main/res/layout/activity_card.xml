@@ -116,9 +116,22 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Inventory"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="71dp">
+        android:background="#99000000"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:onClick="hideInventory"
+        app:layout_constraintBottom_toBottomOf="@+id/cardInfoView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_contraintBottom_toBottomOf="parent"
+        app:layout_contraintEnd_toEndOf="parent"
+        app:layout_contraintHorizontal_bias="0.0"
+        app:layout_contraintStart_toStartOf="parent"
+        app:layout_contraintTop_toTopOf="parent"
+        app:layout_contraintVertical_bias="1.0"
+        tools:context=".Inventory">
+
 
         <EditText
             android:id="@+id/editTextTextPersonName4"
