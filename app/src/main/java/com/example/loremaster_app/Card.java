@@ -102,6 +102,13 @@ public class Card extends AppCompatActivity {
         }
     }
 
+    public void viewInvent(View view) {
+        Intent intent = new Intent(this, Inventory.class);
+        startActivity(intent);
+    }
+
+
+
     public class Scryfall implements Runnable {
         private String entireURL;
         private ImageView theImageView;

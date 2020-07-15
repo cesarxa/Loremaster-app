@@ -53,17 +53,16 @@
 
     <TextView
         android:id="@+id/cardInfoView"
-        android:layout_width="300dp"
-        android:layout_height="175dp"
-        android:layout_marginTop="64dp"
+        android:layout_width="302dp"
+        android:layout_height="163dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_View"
-        app:layout_constraintVertical_bias="0.526" />
+        app:layout_constraintTop_toBottomOf="@+id/viewInvent" />
 
     <Button
         android:id="@+id/addButton"
@@ -110,97 +109,110 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/getCard" />
 
+    <Button
+        android:id="@+id/viewInvent"
+        android:layout_width="257dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="513dp"
+        android:onClick="viewInvent"
+        android:text="View Inventory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <!--this is the Inventory slider, we need to add an id and other stuff. -->
 <!--    but we need to add it here below constraint and abouve Edittext.-->
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#99000000"
-        android:clickable="true"
-        android:elevation="4dp"
-        android:onClick="hideInventory"
-        app:layout_constraintBottom_toBottomOf="@+id/cardInfoView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_contraintBottom_toBottomOf="parent"
-        app:layout_contraintEnd_toEndOf="parent"
-        app:layout_contraintHorizontal_bias="0.0"
-        app:layout_contraintStart_toStartOf="parent"
-        app:layout_contraintTop_toTopOf="parent"
-        app:layout_contraintVertical_bias="1.0"
-        tools:context=".Inventory">
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="#99000000"-->
+<!--        android:clickable="true"-->
+<!--        android:elevation="4dp"-->
+<!--        android:onClick="hideInventory"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/cardInfoView"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_contraintBottom_toBottomOf="parent"-->
+<!--        app:layout_contraintEnd_toEndOf="parent"-->
+<!--        app:layout_contraintHorizontal_bias="0.0"-->
+<!--        app:layout_contraintStart_toStartOf="parent"-->
+<!--        app:layout_contraintTop_toTopOf="parent"-->
+<!--        app:layout_contraintVertical_bias="1.0"-->
+<!--        tools:context=".Inventory">-->
 
 
-        <EditText
-            android:id="@+id/editTextTextPersonName4"
-            android:layout_width="366dp"
-            android:layout_height="43dp"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <EditText-->
+<!--            android:id="@+id/editTextTextPersonName4"-->
+<!--            android:layout_width="366dp"-->
+<!--            android:layout_height="43dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:ems="10"-->
+<!--            android:inputType="textPersonName"-->
+<!--            android:text="Name"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="165dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="8dp"
-            android:text="Search Inventory"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+<!--        <Button-->
+<!--            android:id="@+id/button3"-->
+<!--            android:layout_width="165dp"-->
+<!--            android:layout_height="37dp"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:text="Search Inventory"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />-->
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="216dp"
-            android:layout_height="257dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
-            tools:srcCompat="@tools:sample/avatars" />
+<!--        <ImageView-->
+<!--            android:id="@+id/imageView2"-->
+<!--            android:layout_width="216dp"-->
+<!--            android:layout_height="257dp"-->
+<!--            android:layout_marginTop="24dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView2"-->
+<!--            tools:srcCompat="@tools:sample/avatars" />-->
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="139dp"
-            android:layout_height="256dp"
-            android:layout_marginTop="24dp"
-            android:text="Card info"
-            app:layout_constraintEnd_toStartOf="@+id/imageView2"
-            app:layout_constraintHorizontal_bias="0.4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+<!--        <TextView-->
+<!--            android:id="@+id/textView"-->
+<!--            android:layout_width="139dp"-->
+<!--            android:layout_height="256dp"-->
+<!--            android:layout_marginTop="24dp"-->
+<!--            android:text="Card info"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/imageView2"-->
+<!--            app:layout_constraintHorizontal_bias="0.4"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView2" />-->
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="236dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="16dp"
-            android:text="Total Inventory Worth"
-            android:textAlignment="center"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button3" />
+<!--        <TextView-->
+<!--            android:id="@+id/textView2"-->
+<!--            android:layout_width="236dp"-->
+<!--            android:layout_height="34dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="Total Inventory Worth"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textStyle="italic"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/button3" />-->
 
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="193dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="512dp"
-            android:text="Check Inventory"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <Button-->
+<!--            android:id="@+id/button4"-->
+<!--            android:layout_width="193dp"-->
+<!--            android:layout_height="36dp"-->
+<!--            android:layout_marginTop="512dp"-->
+<!--            android:text="Check Inventory"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.487"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
