@@ -74,8 +74,8 @@ public class Card extends AppCompatActivity {
             Gson gson = new Gson();
             TypeToken<List<InventoryItem>> token = new TypeToken<List<InventoryItem>>(){};
             List<InventoryItem> prefInventory = gson.fromJson(book, token.getType());
-            inventory = prefInventory;
-            for (InventoryItem anItem: inventory) {
+            for (InventoryItem anItem: prefInventory) {
+                inventory.add(anItem);
                 anItem.getCardInfo().displayAll();
             }
         }
