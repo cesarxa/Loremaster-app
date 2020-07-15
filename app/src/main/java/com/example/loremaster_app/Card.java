@@ -38,6 +38,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -68,7 +69,16 @@ public class Card extends AppCompatActivity {
         quantity = 0;
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
         String book = pref.getString("user_inventory", null);
-        System.out.println(book);
+        if (book != null)
+        {
+            Gson gson = new Gson();
+            TypeToken<List<InventoryItem>> token = new TypeToken<List<InventoryItem>>(){};
+            List<InventoryItem> prefInventory = gson.fromJson(book, token.getType());
+            inventory = prefInventory;
+            for (InventoryItem anItem: inventory) {
+                anItem.getCardInfo().displayAll();
+            }
+        }
     }
 
     public void addCard(View view) {
