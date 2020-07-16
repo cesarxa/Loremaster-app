@@ -71,7 +71,6 @@
         android:layout_marginStart="332dp"
         android:layout_marginTop="212dp"
         android:background="@drawable/ic_baseline_add_24"
-        android:text="Inventory"
         android:onClick="upQuantity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -83,7 +82,6 @@
         android:layout_marginStart="332dp"
         android:layout_marginTop="344dp"
         android:background="@drawable/ic_baseline_remove_24"
-        android:text="Inventory"
         android:onClick="downQuantity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
