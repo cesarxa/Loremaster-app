@@ -30,6 +30,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
@@ -106,6 +107,8 @@ public class Card extends AppCompatActivity {
             String json = gson2.toJson(inventory);
             editor.putString("user_inventory", json); // Storing string
             editor.commit();
+
+            Toast.makeText(getApplicationContext(),"Added " + quantity + " " + currentCard.getName() + " to Inventory", Toast.LENGTH_SHORT).show();
         }
     }
 

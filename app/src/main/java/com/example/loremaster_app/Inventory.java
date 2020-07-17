@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -97,6 +98,8 @@ public class Inventory extends AppCompatActivity {
         String json = gson2.toJson(inventory);
         editor.putString("user_inventory", json); // Storing string
         editor.commit();
+
+        Toast.makeText(getApplicationContext(),"Removed 1 " + currentCard.getName() + " from Inventory", Toast.LENGTH_SHORT).show();
 
         totalWorth();
     }
