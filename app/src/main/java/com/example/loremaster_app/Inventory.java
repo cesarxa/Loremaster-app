@@ -59,24 +59,52 @@ public class Inventory extends AppCompatActivity {
         String NewString = getCard.getText().toString();
         for (InventoryItem anItem: inventory) {
             if(NewString.equals(anItem.getCardInfo().getName())){
-                System.out.println("WE GOT INSIDE THE IF STATEMENT");
                 currentCard = anItem.getCardInfo();
                 currentCard.displayAll();
+                quantity = anItem.getQuantity();
                 showCard();
             }
         }
     }
 
+    public void removeCard(View view){
+        String NewString = getCard.getText().toString();
+        List<InventoryItem> newInventory = new ArrayList<InventoryItem>();
+        for (InventoryItem anItem: inventory) {
+            if(NewString.equals(anItem.getCardInfo().getName())){
+                currentCard = anItem.getCardInfo();
+                currentCard.displayAll();
+                anItem.setQuantity(anItem.getQuantity() - 1);
+                quantity = anItem.getQuantity();
+                showCard();
+                if(anItem.getQuantity() > 0)
+                    newInventory.add(anItem);
+            }
+            else
+                newInventory.add(anItem);
+        }
+        inventory.clear();
+        for (InventoryItem anItem: newInventory){
+            inventory.add(anItem);
+        }
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+        SharedPreferences.Editor editor = pref.edit();
+        Gson gson2 = new Gson();
+        String json = gson2.toJson(inventory);
+        editor.putString("user_inventory", json); // Storing string
+        editor.commit();
+    }
+
     public void showCard(){
         String murl = currentCard.getImageURIs().get("border_crop"); //newCard.getLargeImage(); // need to add method or url of images searched;
         Picasso.get().load(murl).into(imageViewDisplayer);
-
         String cInfo =  ("Name: " + currentCard.getName()) +
                 //("\nOracle Text: " + newCard.getOracleText()) +
                 //("\nType: " + newCard.getTypeLine()) +
                 //("\nMana Cost: " + newCard.getManaCost()) +
                 ("\nPrice USD: $" + currentCard.getPrices().get("usd")) +
-                ("\nPrice USD Foil: $" + currentCard.getPrices().get("usd_foil"));
+                ("\nPrice USD Foil: $" + currentCard.getPrices().get("usd_foil")) +
+                ("\nCurrent Quantity in Inventory: " + quantity);
         textViewDisplayer.setText(cInfo);
         textViewDisplayer.setMovementMethod(new ScrollingMovementMethod());
     }
