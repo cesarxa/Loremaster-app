@@ -59,14 +59,12 @@ public class Card extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card);
-
-
         getCard = (EditText) findViewById(R.id.getCard);
         imageViewDisplayer = (ImageView) findViewById(R.id.image_View);
         textViewDisplayer = (TextView) findViewById(R.id.cardInfoView);
         quantfromactivity = (EditText) findViewById(R.id.txtQuantity);
         inventory = new ArrayList<InventoryItem>();
-        quantity = 0;
+        quantity = 1;
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
         String book = pref.getString("user_inventory", null);
         if (book != null)
@@ -82,10 +80,18 @@ public class Card extends AppCompatActivity {
     }
 
     public void addCard(View view) {
-        InventoryItem newItem = null;
-        newItem.setCardInfo(currentCard);
-        inventory.add(newItem);
-        newItem.getCardInfo().displayAll();
+        if(quantity > 0) {
+            InventoryItem newItem = new InventoryItem();
+            newItem.setCardInfo(currentCard);
+            newItem.setQuantity(quantity);
+            inventory.add(newItem);
+        }
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+        SharedPreferences.Editor editor = pref.edit();
+        Gson gson2 = new Gson();
+        String json = gson2.toJson(inventory);
+        editor.putString("user_inventory", json); // Storing string
+        editor.commit();
     }
 
     public void getCardInfo(View view) {
@@ -98,7 +104,6 @@ public class Card extends AppCompatActivity {
     }
 
     public void upQuantity(View view) {
-        System.out.println("We got here");
         quantity++;
         String newText = Integer.toString(quantity);
         quantfromactivity.setText(newText);
@@ -116,8 +121,6 @@ public class Card extends AppCompatActivity {
         Intent intent = new Intent(this, Inventory.class);
         startActivity(intent);
     }
-
-
 
     public class Scryfall implements Runnable {
         private String entireURL;
@@ -155,24 +158,6 @@ public class Card extends AppCompatActivity {
                 Gson gson = new Gson();
                 final CardInfo newCard = gson.fromJson(stringBuilder.toString(), CardInfo.class);
                 currentCard = newCard;
-                currentCard.displayAll();
-                //TEMPORARY CODE
-                //displayAll() prints all string qualities of the card to the console
-                newCard.displayAll();
-
-                InventoryItem newItem = new InventoryItem();
-                newItem.setCardInfo(currentCard);
-                inventory.add(newItem);
-                newItem.getCardInfo().displayAll();
-
-                SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
-                SharedPreferences.Editor editor = pref.edit();
-                Gson gson2 = new Gson();
-                String json = gson2.toJson(inventory);
-                editor.putString("user_inventory", json); // Storing string
-                System.out.println("WE TRY TO PRINT THE JSON STRING HERE");
-                editor.commit();
-                System.out.println(json);
 
                 // display image in uithread
                 runOnUiThread(new Runnable() {

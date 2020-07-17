@@ -93,6 +93,7 @@
         android:layout_marginStart="8dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:text="1"
         app:layout_constraintBottom_toTopOf="@+id/subButton"
         app:layout_constraintStart_toEndOf="@+id/image_View"
         app:layout_constraintTop_toBottomOf="@+id/addButton" />
@@ -104,6 +105,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:text="ADD TO INV"
+        android:onClick="addCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/getCard" />
 
