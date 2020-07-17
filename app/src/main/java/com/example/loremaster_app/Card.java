@@ -79,19 +79,26 @@ public class Card extends AppCompatActivity {
         }
     }
 
+    // add a card, if it already exists then just add to quantity
     public void addCard(View view) {
-        if(quantity > 0) {
-            InventoryItem newItem = new InventoryItem();
-            newItem.setCardInfo(currentCard);
-            newItem.setQuantity(quantity);
-            inventory.add(newItem);
+        if (quantity > 0) {
+            for (InventoryItem anItem : inventory) {
+                if (currentCard.getName().equals(anItem.getCardInfo().getName())) {
+                    anItem.setQuantity(anItem.getQuantity() + quantity);
+                } else {
+                    InventoryItem newItem = new InventoryItem();
+                    newItem.setCardInfo(currentCard);
+                    newItem.setQuantity(quantity);
+                    inventory.add(newItem);
+                    SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+                    SharedPreferences.Editor editor = pref.edit();
+                    Gson gson2 = new Gson();
+                    String json = gson2.toJson(inventory);
+                    editor.putString("user_inventory", json); // Storing string
+                    editor.commit();
+                }
+            }
         }
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
-        SharedPreferences.Editor editor = pref.edit();
-        Gson gson2 = new Gson();
-        String json = gson2.toJson(inventory);
-        editor.putString("user_inventory", json); // Storing string
-        editor.commit();
     }
 
     public void getCardInfo(View view) {

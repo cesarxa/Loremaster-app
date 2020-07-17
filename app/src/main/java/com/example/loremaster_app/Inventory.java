@@ -27,12 +27,15 @@ public class Inventory extends AppCompatActivity {
     EditText getCard;
     ImageView imageViewDisplayer;
     TextView textViewDisplayer;
+    TextView totalTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
         imageViewDisplayer = (ImageView) findViewById(R.id.imageView2);
         textViewDisplayer = (TextView) findViewById(R.id.textView);
+        totalTextView = (TextView) findViewById(R.id.textView2);
         getCard = (EditText) findViewById(R.id.searchPrefInventory);
         inventory = new ArrayList<InventoryItem>();
         quantity = 1;
@@ -48,6 +51,7 @@ public class Inventory extends AppCompatActivity {
                 anItem.getCardInfo().displayAll();
             }
         }
+        totalWorth();
     }
 
     public void viewCardAct(View view) {
@@ -93,6 +97,8 @@ public class Inventory extends AppCompatActivity {
         String json = gson2.toJson(inventory);
         editor.putString("user_inventory", json); // Storing string
         editor.commit();
+
+        totalWorth();
     }
 
     public void showCard(){
@@ -107,6 +113,21 @@ public class Inventory extends AppCompatActivity {
                 ("\nCurrent Quantity in Inventory: " + quantity);
         textViewDisplayer.setText(cInfo);
         textViewDisplayer.setMovementMethod(new ScrollingMovementMethod());
+    }
+
+    public void totalWorth() {
+        float total = 0;
+        for (InventoryItem anItem: inventory){
+            if (anItem.getCardInfo().getPrices().get("usd") != null) {
+                total += (Float.parseFloat(anItem.getCardInfo().getPrices().get("usd")) * anItem.getQuantity());
+            }
+            else if (anItem.getCardInfo().getPrices().get("usd_foil") != null) {
+                total += (Float.parseFloat(anItem.getCardInfo().getPrices().get("usd_foil")) * anItem.getQuantity());
+            }
+        }
+        total = (float) (Math.round(total * 100.0) / 100.0);
+        String netWorth = ("Total Inventory Worth: $" + total);
+        totalTextView.setText(netWorth);
     }
 
     @Override
