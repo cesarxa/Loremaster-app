@@ -62,17 +62,19 @@ public class Inventory extends AppCompatActivity {
 
     public void getInventoryInfo(View view){
         String NewString = getCard.getText().toString();
+        boolean found = false;
         for (InventoryItem anItem: inventory) {
             if(NewString.equals(anItem.getCardInfo().getName())){
                 currentCard = anItem.getCardInfo();
                 currentCard.displayAll();
                 quantity = anItem.getQuantity();
                 showCard();
+                found = true;
                 Toast.makeText(getApplicationContext(),"Found " + quantity + " " + currentCard.getName() + " in Inventory", Toast.LENGTH_SHORT).show();
             }
-            else {
-                Toast.makeText(getApplicationContext(),"Could not find " + NewString + " in Inventory", Toast.LENGTH_SHORT).show();
-            }
+        }
+        if (found == false) {
+            Toast.makeText(getApplicationContext(),"Could not find " + NewString + " in Inventory", Toast.LENGTH_SHORT).show();
         }
     }
 
