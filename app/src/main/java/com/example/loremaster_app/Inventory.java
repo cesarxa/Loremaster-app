@@ -68,6 +68,10 @@ public class Inventory extends AppCompatActivity {
                 currentCard.displayAll();
                 quantity = anItem.getQuantity();
                 showCard();
+                Toast.makeText(getApplicationContext(),"Found " + quantity + " " + currentCard.getName() + " in Inventory", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(getApplicationContext(),"Could not find " + NewString + " in Inventory", Toast.LENGTH_SHORT).show();
             }
         }
     }
