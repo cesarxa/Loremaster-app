@@ -63,8 +63,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.812" />
+        app:layout_constraintTop_toBottomOf="@+id/image_View"
+        app:layout_constraintVertical_bias="0.141" />
 
     <Button
         android:id="@+id/addButton"
@@ -117,14 +117,16 @@
         android:id="@+id/viewInvent"
         android:layout_width="374dp"
         android:layout_height="42dp"
-        android:layout_marginTop="620dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_button"
         android:onClick="viewInvent"
         android:text="View Inventory"
         android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/cardInfoView" />
 
 
     <!--this is the Inventory slider, we need to add an id and other stuff. -->
