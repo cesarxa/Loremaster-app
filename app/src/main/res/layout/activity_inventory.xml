@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Inventory">
+    tools:context=".Inventory"
+    android:background="@drawable/forest2_back">
 
     <EditText
         android:id="@+id/searchPrefInventory"
@@ -24,8 +25,10 @@
         android:layout_width="165dp"
         android:layout_height="37dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_button"
         android:onClick="getInventoryInfo"
         android:text="Search Inventory"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchPrefInventory" />
@@ -69,8 +72,10 @@
         android:layout_height="40dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="508dp"
+        android:background="@drawable/rounded_button"
         android:onClick="viewCardAct"
         android:text="Search Card"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -79,8 +84,10 @@
         android:layout_width="136dp"
         android:layout_height="40dp"
         android:layout_marginTop="508dp"
+        android:background="@drawable/rounded_button"
         android:onClick="removeCard"
         android:text="Remove Card"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/viewCardAct"
         app:layout_constraintTop_toTopOf="parent" />

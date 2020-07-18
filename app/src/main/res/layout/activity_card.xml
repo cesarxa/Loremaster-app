@@ -11,7 +11,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Card"
-    android:background="@drawable/red_back">
+    android:background="@drawable/forest2_back">
 
 
     <EditText
@@ -35,8 +35,10 @@
         android:layout_height="39dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_button"
         android:onClick="getCardInfo"
         android:text="Get Card Info"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/getCard" />
 
@@ -44,7 +46,7 @@
         android:id="@+id/image_View"
         android:layout_width="300dp"
         android:layout_height="375dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.171"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,20 +56,20 @@
     <TextView
         android:id="@+id/cardInfoView"
         android:layout_width="302dp"
-        android:layout_height="163dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_height="58dp"
         android:scrollbars="vertical"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewInvent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.812" />
 
     <Button
         android:id="@+id/addButton"
         android:layout_width="45dp"
-        android:layout_height="66dp"
+        android:layout_height="45dp"
         android:layout_marginStart="332dp"
         android:layout_marginTop="212dp"
         android:background="@drawable/ic_baseline_add_24"
@@ -78,7 +80,7 @@
     <Button
         android:id="@+id/subButton"
         android:layout_width="45dp"
-        android:layout_height="66dp"
+        android:layout_height="45dp"
         android:layout_marginStart="332dp"
         android:layout_marginTop="344dp"
         android:background="@drawable/ic_baseline_remove_24"
@@ -104,20 +106,23 @@
         android:layout_height="38dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:text="ADD TO INV"
+        android:background="@drawable/rounded_button"
         android:onClick="addCard"
+        android:text="ADD TO INV"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/getCard" />
 
     <Button
         android:id="@+id/viewInvent"
-        android:layout_width="257dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="513dp"
+        android:layout_width="374dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="620dp"
+        android:background="@drawable/rounded_button"
         android:onClick="viewInvent"
         android:text="View Inventory"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
